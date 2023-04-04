@@ -60,7 +60,9 @@ function App() {
 
   const handleDeleted = (id: number) => {
     const newTodo = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodo);
+    // 削除後、再度マップし、各TODOのIDを再設定する
+    const updatedTodos = newTodo.map((todo, index) => ({ ...todo, id: index }));
+    setTodos(updatedTodos);
   };
 
   return (
